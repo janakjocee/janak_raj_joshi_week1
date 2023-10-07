@@ -1,0 +1,132 @@
+Debugging Exercise 1: Array Manipulation
+
+
+
+public class ArrayManipulation {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3, 4, 5};
+        
+        for (int i = 0; i < numbers.length; i++) { // Change the condition to '<' instead of '<='
+            System.out.println(numbers[i]);
+        }
+    }
+}
+Explanation: The error in this code is in the for loop condition. It should be i < numbers.length instead of i <= numbers.length. Arrays are zero-indexed in Java, so the valid indices are from 0 to length - 1.
+
+Debugging Exercise 2: Object-Oriented Programming
+
+
+
+class Car {
+    private String make;
+    private String model;
+
+    public Car(String make, String model) {
+        this.make = make;
+        this.model = model;
+    }
+
+    public void start() {
+        System.out.println("Starting the car.");
+    }
+
+    public void stop() { // Add a stop() method to the Car class
+        System.out.println("Stopping the car.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car("Toyota", "Camry");
+        car.start();
+        car.stop();
+    }
+}
+Explanation: The error in this code is that there is no stop() method in the Car class. I've added a stop() method to the Car class to fix this issue.
+
+
+Debugging Exercise 3: Exception Handling
+
+
+
+public class ExceptionHandling {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3, 4, 5};
+        
+        try {
+            System.out.println(numbers[10]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array index out of bounds.");
+        }
+        
+        try {
+            int result = divide(10, 0);
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero.");
+        }
+    }
+
+    public static int divide(int a, int b) {
+        if (b == 0) {
+            throw new ArithmeticException("Cannot divide by zero."); // Throw an exception when dividing by zero
+        }
+        return a / b;
+    }
+}
+Explanation: In this code, I've added a try-catch block to handle the ArithmeticException that occurs when dividing by zero. Additionally, I've added a check in the divide method to throw an exception explicitly when dividing by zero.
+
+Debugging Exercise 4: Fibonacci
+
+
+
+
+public class Fibonacci {
+    public static int fibonacci(int n) {
+        if (n <= 1)
+            return n;
+        else
+            return fibonacci(n-1) + fibonacci(n-2);
+    }
+
+    public static void main(String[] args) {
+        int n = 6;
+        int result = fibonacci(n);
+        System.out.println("The Fibonacci number at position " + n + " is: " + result);
+    }
+}
+Explanation: There is no error in this code. It correctly calculates the Fibonacci sequence. The base case is when n is less than or equal to 1, and the recursive calls are made for n-1 and n-2.
+
+
+Debugging Exercise 5: PrimeNumbers
+
+
+
+
+import java.util.*;
+
+public class PrimeNumbers {
+    public static List<Integer> findPrimes(int n) {
+        List<Integer> primes = new ArrayList<>();
+        for (int i = 2; i <= n; i++) {
+            boolean isPrime = true;
+            for (int j = 2; j <= Math.sqrt(i); j++) { // Correct the condition for checking prime numbers
+                if (i % j == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            if (isPrime) {
+                primes.add(i);
+            }
+        }
+        return primes;
+    }
+
+    public static void main(String[] args) {
+        int n = 20;
+        List<Integer> primeNumbers = findPrimes(n);
+        System.out.println("Prime numbers up to " + n + ": " + primeNumbers);
+    }
+}
+Explanation: In this code, I've corrected the condition for checking prime numbers. The inner loop should run from 2 to the square root of i (Math.sqrt(i)) because any factor of i greater than its square root has already been checked.
